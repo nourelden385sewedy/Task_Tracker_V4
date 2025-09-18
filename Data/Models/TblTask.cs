@@ -15,8 +15,6 @@ public partial class TblTask
 
     public long? AssignedById { get; set; }
 
-    public DateOnly? DueDate { get; set; }
-
     public DateOnly? CreatedAt { get; set; }
 
     public DateTime TaskDeadline { get; set; }
@@ -31,7 +29,7 @@ public partial class TblTask
 
     public int? TeamId { get; set; }
 
-    public int WeekNumber { get; set; }
+    public int? WeekNumber { get; set; }
 
     public virtual Account? AdminAccount { get; set; }
 

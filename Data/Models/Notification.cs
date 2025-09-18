@@ -15,6 +15,8 @@ public partial class Notification
 
     public long? ReadStatusId { get; set; }
 
+    public bool? isActive { get; set; }
+
     public DateTime? CreatedAt { get; set; }
 
     public virtual Account? Account { get; set; }
