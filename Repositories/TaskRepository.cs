@@ -50,7 +50,9 @@ namespace Task_Tracker_V4.Repositories
 
         public async Task<TblTask?> GetFullTaskByIdAsync(long id)
         {
-            var task = await _context.TblTasks.FirstOrDefaultAsync(t => t.Id == id && t.StatusId != 2);
+            var task = await _context.TblTasks
+                .Where(t => t.Id == id && t.StatusId != 2)
+                .FirstOrDefaultAsync();
             return task;
         }
 
@@ -118,7 +120,7 @@ namespace Task_Tracker_V4.Repositories
                 .Select(a => a.FullNameEn).FirstOrDefaultAsync();
 
             return await _context.TblTasks
-                .Where(x => x.AssignedById != accountId && x.AdminAccountId == null && x.StatusId != 2)
+                .Where(x => x.AssignedToId == accountId && x.AdminAccountId == null && x.StatusId != 2)
                 .Select(x => new TaskDto
                 {
                     Id = x.Id,
