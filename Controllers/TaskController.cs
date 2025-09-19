@@ -77,7 +77,7 @@ namespace Task_Tracker_V4.Controllers
 
 
         [HttpPut("update/{id}")]
-        public async Task<IActionResult> UpdateTask(long id, TaskDto taskDto)
+        public async Task<IActionResult> UpdateTask(long id, TaskUpdateDto taskDto)
         {
             bool isUpdated = await _taskService.UpdateTaskAsync(id, taskDto);
             if (!isUpdated)

@@ -345,17 +345,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/TaskDto"
+                "$ref": "#/components/schemas/TaskUpdateDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/TaskDto"
+                "$ref": "#/components/schemas/TaskUpdateDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/TaskDto"
+                "$ref": "#/components/schemas/TaskUpdateDto"
               }
             }
           }
@@ -494,7 +494,7 @@
         },
         "additionalProperties": false
       },
-      "TaskDto": {
+      "TaskUpdateDto": {
         "type": "object",
         "properties": {
           "id": {
@@ -513,17 +513,8 @@
             "type": "string",
             "nullable": true
           },
-          "assignedByName": {
-            "type": "string",
-            "nullable": true
-          },
           "status": {
             "type": "string",
-            "nullable": true
-          },
-          "createdAt": {
-            "type": "string",
-            "format": "date",
             "nullable": true
           },
           "dueDate": {

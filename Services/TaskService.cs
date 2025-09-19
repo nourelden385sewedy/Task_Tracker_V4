@@ -59,7 +59,7 @@ namespace Task_Tracker_V4.Services
             return true;
         }
 
-        public async Task<bool> UpdateTaskAsync(long id, TaskDto taskDto)
+        public async Task<bool> UpdateTaskAsync(long id, TaskUpdateDto taskDto)
         {
             var task = await _taskRepo.GetFullTaskByIdAsync(id);
 
