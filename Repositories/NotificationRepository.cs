@@ -28,6 +28,7 @@ namespace Task_Tracker_V4.Repositories
                 .Where(n => n.AccountId == accountId && n.isActive == true)
                 .Select(n => new NotificationDto { 
                     Id = n.Id,
+                    AccountId = n.AccountId,
                     Title = n.Title,
                     Message = n.Message,
                     isRead = StatusMapper.MapReadStatusBoolean(n.ReadStatusId),

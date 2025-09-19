@@ -19,7 +19,12 @@ namespace Task_Tracker_V4.Controllers
         [HttpGet("user-nots/{id}")]
         public async Task<IActionResult> GetAllNotificationsByAccountId(long id)
         {
-            return Ok();
+            var nots = await _notificationService.GetNotificationsByAccountIdAsync(id);
+            if (nots == null)
+            {
+                return NotFound("There isn't any Notifications Right Now!!");
+            }
+            return Ok(nots);
         }
 
 
