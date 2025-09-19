@@ -87,6 +87,8 @@ namespace Task_Tracker_V4.Services
             }
 
             acc.IsActive = false;
+            _accountRepo.Update(acc);
+            await _accountRepo.SaveChangesAsync();
 
             return true;
         }
