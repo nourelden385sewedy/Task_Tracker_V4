@@ -1,6 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using Task_Tracker_V4.Data;
+using Task_Tracker_V4.Repositories;
+using Task_Tracker_V4.Repositories.Interfaces;
+using Task_Tracker_V4.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,9 +16,21 @@ builder.Services.AddDbContext<MyDbContext>(options =>
 
 
 // 2. Repositories
+builder.Services.AddScoped<ILoginRepository, LoginRepository>();
+builder.Services.AddScoped<IAccountRepository, AccountRepository>();
+builder.Services.AddScoped<ITaskRepository, TaskRepository>();
+builder.Services.AddScoped<INotificationRepository, NotificationRepository>();
+//builder.Services.AddScoped<IStatusRepository, StatusRepository>();
+//builder.Services.AddScoped<ILoginRepository, LoginRepository>();
+//builder.Services.AddScoped<IRoleRepository, RoleRepository>();
 
 
 // 3. Services
+builder.Services.AddScoped<LoginService>();
+builder.Services.AddScoped<AccountService>();
+builder.Services.AddScoped<TaskService>();
+builder.Services.AddScoped<NotificationService>();
+//builder.Services.AddScoped<StatusService>();
 
 
 // 4. Controllers

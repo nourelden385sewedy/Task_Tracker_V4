@@ -1,0 +1,18 @@
+[
+  {
+    "ContainingType": "Task_Tracker_V4.Controllers.LoginController",
+    "Method": "LoginAuth",
+    "RelativePath": "api/Login/LoginAuth",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "req",
+        "Type": "Task_Tracker_V4.DTOs.LoginRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]
