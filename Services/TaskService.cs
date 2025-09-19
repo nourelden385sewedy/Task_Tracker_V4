@@ -42,7 +42,7 @@ namespace Task_Tracker_V4.Services
             return await _taskRepo.GetByAssignedToAsync(id);
         }
         
-        public async Task<bool> CreateTaskAsync(TaskDto taskDto)
+        public async Task<bool> CreateTaskAsync(TaskCreateDto taskDto)
         {
             TblTask task = new TblTask()
             {
@@ -50,7 +50,8 @@ namespace Task_Tracker_V4.Services
                 TaskDescription = taskDto.TaskDescription,
                 AssignedToId = await _accountRepo.GetIdByNameAsync(taskDto.AssignedToName),
                 AssignedById = await _accountRepo.GetIdByNameAsync(taskDto.AssignedByName),
-                StatusId = StatusMapper.MapToStatusID(taskDto.Status)
+                StatusId = StatusMapper.MapToStatusID(taskDto.Status),
+                TaskDeadline = taskDto.DueDate
             };
 
             _taskRepo.Add(task);

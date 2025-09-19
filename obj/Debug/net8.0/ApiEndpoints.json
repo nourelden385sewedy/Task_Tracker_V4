@@ -184,7 +184,7 @@
     "Parameters": [
       {
         "Name": "taskDto",
-        "Type": "Task_Tracker_V4.DTOs.TaskDto",
+        "Type": "Task_Tracker_V4.DTOs.TaskCreateDto",
         "IsRequired": true
       }
     ],

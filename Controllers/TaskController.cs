@@ -65,7 +65,7 @@ namespace Task_Tracker_V4.Controllers
 
 
         [HttpPost("create")]
-        public async Task<IActionResult> CreateTask(TaskDto taskDto)
+        public async Task<IActionResult> CreateTask(TaskCreateDto taskDto)
         {
             bool isCreated = await _taskService.CreateTaskAsync(taskDto);
             if (!isCreated)
