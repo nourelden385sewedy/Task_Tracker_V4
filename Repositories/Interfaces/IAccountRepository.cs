@@ -8,7 +8,7 @@ namespace Task_Tracker_V4.Repositories.Interfaces
         Task<Account?> GetByIdAsync(long id);
         Task<long?> GetIdByNameAsync(string? name);
         Task<string?> GetRoleNameByAccountIdAsync(long id);
-        Task<string?> GetAccountNameByIdAsync(long? id);
+        Task<string?> GetAccountNameByIdAsync(long id);
         Task<IEnumerable<AccountDto>> GetAllAsync();
         Task<Account?> GetByEmailAsync(string email);
         void Add(Account account);

@@ -17,7 +17,9 @@ namespace Task_Tracker_V4.Repositories
 
         public async Task<Login?> GetByEmailAsync(string email)
         {
-            var l = await _context.Logins.FirstOrDefaultAsync(x => x.Email == email);
+            var l = await _context.Logins
+                .Where(x => x.Email == email && x.StatusId != 2)
+                .FirstOrDefaultAsync();
             return l;
         }
     }

@@ -10,7 +10,8 @@
             { 3, "Senior Engineer" },
             { 4, "Engineer" },
             { 5, "Senior Teacher" },
-            { 6, "Teacher" }
+            { 6, "Teacher" },
+            { 7, "Reviewer" }
         };
 
         public static readonly Dictionary<string, string> RolesHash = new()

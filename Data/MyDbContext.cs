@@ -6,7 +6,7 @@ namespace Task_Tracker_V4.Data
     public class MyDbContext : DbContext
     {
 
-        public MyDbContext() { }
+        //public MyDbContext() { }
         public MyDbContext(DbContextOptions<MyDbContext> options)
         : base(options)
         {
@@ -903,10 +903,176 @@ namespace Task_Tracker_V4.Data
                     .HasColumnName("SocialID");
             });
 
-            //OnModelCreatingPartial(modelBuilder);
+            //------------------------
+            // My Custom Data Seeding
+            //------------------------
+
+            // ===== Roles =====
+            modelBuilder.Entity<Role>().HasData(
+                new Role { Id = 1, RoleName = "Super Admin", OrderNo = 1, BusinessEntity = "General" },
+                new Role { Id = 2, RoleName = "Admin", OrderNo = 2, BusinessEntity = "General" },
+                new Role { Id = 3, RoleName = "Senior Engineer", OrderNo = 3, BusinessEntity = "Task" },
+                new Role { Id = 4, RoleName = "Engineer", OrderNo = 4, BusinessEntity = "Task" },
+                new Role { Id = 5, RoleName = "Senior Teacher", OrderNo = 5, BusinessEntity = "Task" },
+                new Role { Id = 6, RoleName = "Teacher", OrderNo = 6, BusinessEntity = "Task" },
+                new Role { Id = 7, RoleName = "Reviewer", OrderNo = 7, BusinessEntity = "Task" },
+                new Role { Id = 8, RoleName = "Supervisor", OrderNo = 8, BusinessEntity = "General" }
+            );
+
+
+            // ===== Status =====
+            modelBuilder.Entity<Status>().HasData(
+                new Status { Id = 1, StatusName = "Active", BusinessEntity = "General", OrderNo = 1 },
+                new Status { Id = 2, StatusName = "InActive", BusinessEntity = "General", OrderNo = 2 },
+                new Status { Id = 3, StatusName = "Not Started", BusinessEntity = "Task", OrderNo = 3 },
+                new Status { Id = 4, StatusName = "In Progress", BusinessEntity = "Task", OrderNo = 4 },
+                new Status { Id = 5, StatusName = "Completed", BusinessEntity = "Task", OrderNo = 5 },
+                new Status { Id = 6, StatusName = "Read", BusinessEntity = "Task", OrderNo = 6 },
+                new Status { Id = 7, StatusName = "UnRead", BusinessEntity = "Task", OrderNo = 7 }
+            );
+
+            // ===== Accounts =====
+            modelBuilder.Entity<Account>().HasData(
+                new Account
+                {
+                    Id = 1, NationalId = "29501011111111", PasswordHash = "hashed_pass_sa",
+                    Email = "superadmin@elsewedy.com",
+                    Phone = "01012345678", RoleId = 1, FullNameEn = "Super Admin User",
+                    ResetToken = null, ResetTokenExpiry = null,
+                    FullNameAr = "مدير النظام", CreatedAt = DateOnly.FromDateTime(DateTime.UtcNow),
+                    IsActive = true, StatusId = 1
+                },
+                new Account
+                {
+                    Id = 2,
+                    NationalId = "29602022222222",
+                    PasswordHash = "hashed_pass_a",
+                    Email = "admin@elsewedy.com",
+                    Phone = "01123456789",
+                    RoleId = 2,
+                    FullNameEn = "Admin User",
+                    ResetToken = null,
+                    ResetTokenExpiry = null,
+                    FullNameAr = "مسؤول النظام",
+                    CreatedAt = DateOnly.FromDateTime(DateTime.UtcNow),
+                    IsActive = true,
+                    StatusId = 1
+                },
+                new Account
+                {
+                    Id = 3,
+                    NationalId = "29804043336666",
+                    PasswordHash = "hashed_pass_e1",
+                    Email = "engineer1@elsewedy.com",
+                    Phone = "01068745438",
+                    RoleId = 3,
+                    FullNameEn = "Senior Engineer Yara Yasser",
+                    ResetToken = null,
+                    ResetTokenExpiry = null,
+                    FullNameAr = "يارا ياسر",
+                    CreatedAt = DateOnly.FromDateTime(DateTime.UtcNow),
+                    IsActive = true,
+                    StatusId = 1
+                },
+                new Account
+                {
+                    Id = 4,
+                    NationalId = "29804043337878",
+                    PasswordHash = "hashed_pass_e2",
+                    Email = "engineer2@elsewedy.com",
+                    Phone = "01068145338",
+                    RoleId = 4,
+                    FullNameEn = "Sara Awad",
+                    ResetToken = null,
+                    ResetTokenExpiry = null,
+                    FullNameAr = "سارة عواد",
+                    CreatedAt = DateOnly.FromDateTime(DateTime.UtcNow),
+                    IsActive = true,
+                    StatusId = 1
+                },
+                new Account
+                {
+                    Id = 5,
+                    NationalId = "29703033333333",
+                    PasswordHash = "hashed_pass_t1",
+                    Email = "teacher1@elsewedy.com",
+                    Phone = "01234567890",
+                    RoleId = 5,
+                    FullNameEn = "Senior Rasha Mohamed",
+                    ResetToken = null,
+                    ResetTokenExpiry = null,
+                    FullNameAr = "رشا محمد",
+                    CreatedAt = DateOnly.FromDateTime(DateTime.UtcNow),
+                    IsActive = true,
+                    StatusId = 1
+                },
+                new Account
+                {
+                    Id = 6,
+                    NationalId = "29703034444444",
+                    PasswordHash = "hashed_pass_t2",
+                    Email = "teacher2@elsewedy.com",
+                    Phone = "01234567891",
+                    RoleId = 6,
+                    FullNameEn = "Ahmed Kamel",
+                    ResetToken = null,
+                    ResetTokenExpiry = null,
+                    FullNameAr = "أحمد كامل",
+                    CreatedAt = DateOnly.FromDateTime(DateTime.UtcNow),
+                    IsActive = true,
+                    StatusId = 1
+                },
+                new Account
+                {
+                    Id = 7,
+                    NationalId = "29905057777777",
+                    PasswordHash = "hashed_pass_r1",
+                    Email = "reviewer1@elsewedy.com",
+                    Phone = "01155555555",
+                    RoleId = 7,
+                    FullNameEn = "Reviewer One",
+                    ResetToken = null,
+                    ResetTokenExpiry = null,
+                    FullNameAr = "مقيم واحد",
+                    CreatedAt = DateOnly.FromDateTime(DateTime.UtcNow),
+                    IsActive = true,
+                    StatusId = 1
+                }
+            );
+
+            // ===== Logins =====
+            modelBuilder.Entity<Login>().HasData(
+                new Login { Id = 1, AccountId = 1, Email = "superadmin@elsewedy.com", PasswordHash = "hashed_pass_sa", StatusId = 1 },
+                new Login { Id = 2, AccountId = 2, Email = "admin@elsewedy.com", PasswordHash = "hashed_pass_a", StatusId = 1 },
+                new Login { Id = 3, AccountId = 3, Email = "engineer1@elsewedy.com", PasswordHash = "hashed_pass_e1", StatusId = 1 },
+                new Login { Id = 4, AccountId = 5, Email = "teacher1@elsewedy.com", PasswordHash = "hashed_pass_t1", StatusId = 1 },
+                new Login { Id = 5, AccountId = 4, Email = "engineer2@elsewedy.com", PasswordHash = "hashed_pass_e2", StatusId = 1 },
+                new Login { Id = 6, AccountId = 6, Email = "teacher2@elsewedy.com", PasswordHash = "hashed_pass_t2", StatusId = 1 }
+            );
+
+
+            // ===== Notifications =====
+            modelBuilder.Entity<Notification>().HasData(
+                new Notification { Id = 1, AccountId = 1, Title = "System Start", Message = "System is running", ReadStatusId = 1, isActive = true, CreatedAt = DateTime.UtcNow },
+                new Notification { Id = 2, AccountId = 2, Title = "Welcome!", Message = "Welcome to the Elsewedy School System.", ReadStatusId = 2, isActive = true, CreatedAt = DateTime.UtcNow },
+                new Notification { Id = 3, AccountId = 3, Title = "New Task Assigned", Message = "SuperAdmin has assigned you the task: System Challange.", ReadStatusId = 7, isActive = true, CreatedAt = DateTime.UtcNow },
+                new Notification { Id = 4, AccountId = 1, Title = "Task Completed", Message = "Admin has completed the task: System Audit.", ReadStatusId = 7, isActive = true, CreatedAt = DateTime.UtcNow },
+                new Notification { Id = 5, AccountId = 5, Title = "New Task Assigned", Message = "Admin has assigned you the task: Prepare Lesson Plan.", ReadStatusId = 7, isActive = true, CreatedAt = DateTime.UtcNow },
+                new Notification { Id = 6, AccountId = 3, Title = "New Task Assigned", Message = "Admin has assigned you the task: Lab Equipment Setup.", ReadStatusId = 7, isActive = true, CreatedAt = DateTime.UtcNow },
+                new Notification { Id = 7, AccountId = 4, Title = "Task Status Updated", Message = "System Audit has been marked as Pending", ReadStatusId = 6, isActive = true, CreatedAt = DateTime.UtcNow }
+            );
+
+            // ===== TblTask =====
+            modelBuilder.Entity<TblTask>().HasData(
+                new TblTask { Id = 1, TaskName = "Database Design Document", TaskDescription = "Design the database schema for the new system.", AssignedToId = 6, AssignedById = 2, CreatedAt = new DateOnly(2025, 12, 01), TaskDeadline = new DateTime(2025, 12, 01, 17, 00, 00, 000, DateTimeKind.Utc), StatusId = 1},
+                new TblTask { Id = 2, TaskName = "Front-end Prototype", TaskDescription = "Create a UI prototype for the student dashboard.", AssignedToId = 7, AssignedById = 2, CreatedAt = new DateOnly(2025, 12, 15), TaskDeadline = new DateTime(2025, 12, 15, 17, 00, 00, 000, DateTimeKind.Utc), StatusId = 1},
+                new TblTask { Id = 3, TaskName = "System Audit", TaskDescription = "Review all user accounts and permissions.", AssignedToId = 2, AssignedById = 1, CreatedAt = new DateOnly(2025, 12, 10), TaskDeadline = new DateTime(2025, 12, 10, 17, 00, 00, 000, DateTimeKind.Utc), StatusId = 1},
+                new TblTask { Id = 4, TaskName = "Prepare Lesson Plan", TaskDescription = "Create the lesson plan for the next semester.", AssignedToId = 4, AssignedById = 5, CreatedAt = new DateOnly(2025, 11, 20), TaskDeadline = new DateTime(2025, 11, 20, 17, 00, 00, 000, DateTimeKind.Utc), StatusId = 1},
+                new TblTask { Id = 5, TaskName = "Lab Equipment Setup", TaskDescription = "Install and configure lab equipment.", AssignedToId = 3, AssignedById = 3, CreatedAt = new DateOnly(2025, 11, 25), TaskDeadline = new DateTime(2025, 11, 25, 17, 00, 00, 000, DateTimeKind.Utc), StatusId = 1}
+            );
         }
 
-        //void OnModelCreatingPartial(ModelBuilder modelBuilder);
+
 
     }
 }

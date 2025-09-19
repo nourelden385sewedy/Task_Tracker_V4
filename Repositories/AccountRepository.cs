@@ -2,6 +2,7 @@
 using System;
 using Task_Tracker_V4.Data;
 using Task_Tracker_V4.DTOs;
+using Task_Tracker_V4.HelperClasses;
 using Task_Tracker_V4.Models;
 using Task_Tracker_V4.Repositories.Interfaces;
 
@@ -16,9 +17,25 @@ namespace Task_Tracker_V4.Repositories
             _context = context;
         }
 
+        public async Task<IEnumerable<AccountDto>> GetAllAsync()
+        {
+            return await _context.Accounts
+                .Where(a => a.IsActive == true)
+                .Select(a => new AccountDto
+                {
+                    Id = a.Id,
+                    Name = a.FullNameEn,
+                    Email = a.Email,
+                    Phone = a.Phone,
+                    RoleHash = RoleMapper.MapIdToRoleHash(a.RoleId),
+                    JoinDate = a.CreatedAt
+                }).ToListAsync();
+
+        }
+
         public async Task<Account?> GetByIdAsync(long id)
         {
-            return await _context.Accounts.FirstOrDefaultAsync(x => x.Id == id);
+            return await _context.Accounts.FirstOrDefaultAsync(x => x.Id == id && x.IsActive == true);
         }
 
         public async Task<Account?> GetByEmailAsync(string email)
@@ -37,24 +54,23 @@ namespace Task_Tracker_V4.Repositories
         }
 
         // --------------
-        public Task<string?> GetAccountNameByIdAsync(long? id)
+        public async Task<string?> GetAccountNameByIdAsync(long id)
         {
-            throw new NotImplementedException();
+            var acc = await _context.Accounts.FirstOrDefaultAsync(a => a.Id == id);
+            return acc?.FullNameEn;
         }
 
-        public Task<IEnumerable<AccountDto>> GetAllAsync()
+        public async Task<long?> GetIdByNameAsync(string? name)
         {
-            throw new NotImplementedException();
+            var account = await _context.Accounts.FirstOrDefaultAsync(a => a.FullNameEn == name);
+            return account?.Id;
         }
 
-        
 
-        
 
-        public Task<long?> GetIdByNameAsync(string? name)
-        {
-            throw new NotImplementedException();
-        }
+
+
+
 
         public Task<string?> GetRoleNameByAccountIdAsync(long id)
         {

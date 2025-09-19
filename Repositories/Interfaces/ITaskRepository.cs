@@ -6,6 +6,7 @@ namespace Task_Tracker_V4.Repositories.Interfaces
     public interface ITaskRepository
     {
         Task<TaskDto?> GetByIdAsync(long id);
+        Task<TblTask?> GetFullTaskByIdAsync(long id);
         Task<IEnumerable<TaskDto>> GetAllAsync();
         Task<IEnumerable<TaskDto>> GetByAssignedToAsync(long accountId);
         Task<IEnumerable<TaskDto>> GetByAssignedByIdAsync(long accountId);

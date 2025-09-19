@@ -17,6 +17,30 @@ namespace Task_Tracker_V4.Controllers
         }
 
 
+        [HttpGet("users")]
+        public async Task<IActionResult> GetAllAccounts()
+        {
+            var accounts = await _accountService.GetAllUsersAsync();
+            if (accounts == null)
+            {
+                return NotFound("There is no Users right now");
+            }
+            return Ok(accounts);
+        }
+
+
+        [HttpGet("user/{id}")]
+        public async Task<IActionResult> GetAccountById(long id)
+        {
+            var account = await _accountService.GetUserById(id);
+            if (account == null)
+            {
+                return NotFound("Something went wrong, this account not found");
+            }
+            return Ok(account);
+        }
+
+
         [HttpPatch("update-role/{id}/{roleHash}")]
         public async Task<IActionResult> UpdateAccountRoleAsync(long id, string roleHash)
         {

@@ -32,11 +32,25 @@ builder.Services.AddScoped<TaskService>();
 builder.Services.AddScoped<NotificationService>();
 //builder.Services.AddScoped<StatusService>();
 
+builder.Services.AddScoped<AccountRepository>();
+
+
 
 // 4. Controllers
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// 5. React App Using CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll",
+        policy => policy
+            .AllowAnyOrigin()
+            .AllowAnyHeader()
+            .AllowAnyMethod());
+});
+
 
 var app = builder.Build();
 
@@ -48,6 +62,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors("AllowAll");
 
 app.UseAuthorization();
 

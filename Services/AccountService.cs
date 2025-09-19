@@ -14,6 +14,33 @@ namespace Task_Tracker_V4.Services
         }
 
 
+        public async Task<IEnumerable<AccountDto>> GetAllUsersAsync()
+        {
+            var accounts = await _accountRepo.GetAllAsync();
+            return accounts;
+        }
+
+        public async Task<AccountDto?> GetUserById(long id)
+        {
+            var account = await _accountRepo.GetByIdAsync(id);
+
+            if (account != null)
+            {
+                AccountDto accountDto = new AccountDto()
+                {
+                    Id = account.Id,
+                    Name = account.FullNameEn,
+                    Email = account.Email,
+                    Phone = account.Phone,
+                    RoleHash = RoleMapper.MapIdToRoleHash(account.RoleId),
+                    JoinDate = account.CreatedAt
+                };
+                return accountDto;
+            }
+
+            return null; 
+        }
+
         public async Task<bool> ChangeAccountRoleAsync(long id, string roleHash)
         {
             var acc = await _accountRepo.GetByIdAsync(id);
