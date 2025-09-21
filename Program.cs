@@ -12,7 +12,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // 1. DbContext
 builder.Services.AddDbContext<MyDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("HomeLocalDbConnection")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("AspMonsterConnection")));
 
 
 // 2. Repositories

@@ -137,7 +137,6 @@ D:\School\Summer Course Project\Project\Task Tracker V4\obj\Debug\net8.0\staticw
 D:\School\Summer Course Project\Project\Task Tracker V4\obj\Debug\net8.0\staticwebassets.build.json.cache
 D:\School\Summer Course Project\Project\Task Tracker V4\obj\Debug\net8.0\staticwebassets.development.json
 D:\School\Summer Course Project\Project\Task Tracker V4\obj\Debug\net8.0\staticwebassets.build.endpoints.json
-D:\School\Summer Course Project\Project\Task Tracker V4\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 D:\School\Summer Course Project\Project\Task Tracker V4\obj\Debug\net8.0\Task Tra.6BD9C63A.Up2Date
 D:\School\Summer Course Project\Project\Task Tracker V4\obj\Debug\net8.0\Task Tracker V4.dll
 D:\School\Summer Course Project\Project\Task Tracker V4\obj\Debug\net8.0\refint\Task Tracker V4.dll

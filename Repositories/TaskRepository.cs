@@ -19,7 +19,7 @@ namespace Task_Tracker_V4.Repositories
 
         public async Task<TaskDto?> GetByIdAsync(long id)
         {
-            var task = await _context.TblTasks.FirstOrDefaultAsync(t => t.Id == id && t.StatusId != 2);
+            var task = await _context.TblTasks.FirstOrDefaultAsync(t => t.Id == id && t.StatusId <= 5 && t.StatusId >= 3);
 
             if (task != null)
             {
@@ -72,7 +72,7 @@ namespace Task_Tracker_V4.Repositories
                 .FirstOrDefaultAsync();
 
             return await _context.TblTasks
-                .Where(x => x.AssignedById == accountId && x.AdminAccountId == null && x.StatusId != 2)
+                .Where(x => x.AssignedById == accountId && x.AdminAccountId == null && x.StatusId <= 5 && x.StatusId >= 3)
                 .Select(x => new TaskDto
                 {
                     Id = x.Id,
@@ -93,7 +93,7 @@ namespace Task_Tracker_V4.Repositories
         {
 
             return await _context.TblTasks
-                .Where(x => x.AssignedById != accountId && x.AdminAccountId == null && x.StatusId != 2)
+                .Where(x => x.AssignedById != accountId && x.AdminAccountId == null && x.StatusId <= 5 && x.StatusId >= 3)
                 .Select(x => new TaskDto
                 {
                     Id = x.Id,
@@ -120,7 +120,7 @@ namespace Task_Tracker_V4.Repositories
                 .Select(a => a.FullNameEn).FirstOrDefaultAsync();
 
             return await _context.TblTasks
-                .Where(x => x.AssignedToId == accountId && x.AdminAccountId == null && x.StatusId != 2)
+                .Where(x => x.AssignedToId == accountId && x.AdminAccountId == null && x.StatusId <= 5 && x.StatusId >= 3)
                 .Select(x => new TaskDto
                 {
                     Id = x.Id,
