@@ -29,7 +29,7 @@ namespace Task_Tracker_V4.Services
 
             if (no != null)
             {
-                no.ReadStatusId = 7;
+                no.ReadStatusId = 6;
                 _notificationRepo.Update(no);
                 await _notificationRepo.SaveChangesAsync();
                 return true;
