@@ -39,5 +39,18 @@ namespace Task_Tracker_V4.Controllers
             return Ok("Notification Now is Read");
         }
 
+
+        [HttpDelete("notification/{id}")]
+        public async Task<IActionResult> DeleteNotification(long id)
+        {
+            bool isDeleted = await _notificationService.DeleteNotification(id);
+
+            if (!isDeleted)
+            {
+                return NotFound("Notification Not Found, can't update the Status");
+            }
+            return Ok("Notification Deleted Sucessfully");
+        }
+
     }
 }

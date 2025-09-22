@@ -38,5 +38,19 @@ namespace Task_Tracker_V4.Services
             return false;
         }
 
+        public async Task<bool> DeleteNotification(long id)
+        {
+            var not = await _notificationRepo.GetByIdAsync(id);
+
+            if (not != null)
+            {
+                not.isActive = false;
+                _notificationRepo.Update(not);
+                await _notificationRepo.SaveChangesAsync();
+                return true;
+            }
+
+            return false;
+        }
     }
 }

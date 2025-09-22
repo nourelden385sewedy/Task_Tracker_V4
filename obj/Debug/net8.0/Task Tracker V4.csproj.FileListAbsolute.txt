@@ -144,3 +144,4 @@ D:\School\Summer Course Project\Project\Task Tracker V4\obj\Debug\net8.0\Task Tr
 D:\School\Summer Course Project\Project\Task Tracker V4\obj\Debug\net8.0\Task Tracker V4.genruntimeconfig.cache
 D:\School\Summer Course Project\Project\Task Tracker V4\obj\Debug\net8.0\ref\Task Tracker V4.dll
 D:\School\Summer Course Project\Project\Task Tracker V4\obj\Debug\net8.0\Task Tracker V4.sourcelink.json
+D:\School\Summer Course Project\Project\Task Tracker V4\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
