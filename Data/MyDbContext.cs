@@ -1064,11 +1064,11 @@ namespace Task_Tracker_V4.Data
 
             // ===== TblTask =====
             modelBuilder.Entity<TblTask>().HasData(
-                new TblTask { Id = 1, TaskName = "Database Design Document", TaskDescription = "Design the database schema for the new system.", AssignedToId = 6, AssignedById = 2, CreatedAt = new DateOnly(2025, 12, 01), TaskDeadline = new DateTime(2025, 12, 01, 17, 00, 00, 000, DateTimeKind.Utc), StatusId = 1},
-                new TblTask { Id = 2, TaskName = "Front-end Prototype", TaskDescription = "Create a UI prototype for the student dashboard.", AssignedToId = 7, AssignedById = 2, CreatedAt = new DateOnly(2025, 12, 15), TaskDeadline = new DateTime(2025, 12, 15, 17, 00, 00, 000, DateTimeKind.Utc), StatusId = 1},
-                new TblTask { Id = 3, TaskName = "System Audit", TaskDescription = "Review all user accounts and permissions.", AssignedToId = 2, AssignedById = 1, CreatedAt = new DateOnly(2025, 12, 10), TaskDeadline = new DateTime(2025, 12, 10, 17, 00, 00, 000, DateTimeKind.Utc), StatusId = 1},
-                new TblTask { Id = 4, TaskName = "Prepare Lesson Plan", TaskDescription = "Create the lesson plan for the next semester.", AssignedToId = 4, AssignedById = 5, CreatedAt = new DateOnly(2025, 11, 20), TaskDeadline = new DateTime(2025, 11, 20, 17, 00, 00, 000, DateTimeKind.Utc), StatusId = 1},
-                new TblTask { Id = 5, TaskName = "Lab Equipment Setup", TaskDescription = "Install and configure lab equipment.", AssignedToId = 3, AssignedById = 3, CreatedAt = new DateOnly(2025, 11, 25), TaskDeadline = new DateTime(2025, 11, 25, 17, 00, 00, 000, DateTimeKind.Utc), StatusId = 1}
+                new TblTask { Id = 1, TaskName = "Database Design Document", TaskDescription = "Design the database schema for the new system.", AssignedToId = 6, AssignedById = 2, CreatedAt = new DateOnly(2025, 12, 01), TaskDeadline = new DateTime(2025, 12, 01, 17, 00, 00, 000, DateTimeKind.Utc), StatusId = 3},
+                new TblTask { Id = 2, TaskName = "Front-end Prototype", TaskDescription = "Create a UI prototype for the student dashboard.", AssignedToId = 7, AssignedById = 2, CreatedAt = new DateOnly(2025, 12, 15), TaskDeadline = new DateTime(2025, 12, 15, 17, 00, 00, 000, DateTimeKind.Utc), StatusId = 3},
+                new TblTask { Id = 3, TaskName = "System Audit", TaskDescription = "Review all user accounts and permissions.", AssignedToId = 2, AssignedById = 1, CreatedAt = new DateOnly(2025, 12, 10), TaskDeadline = new DateTime(2025, 12, 10, 17, 00, 00, 000, DateTimeKind.Utc), StatusId = 3},
+                new TblTask { Id = 4, TaskName = "Prepare Lesson Plan", TaskDescription = "Create the lesson plan for the next semester.", AssignedToId = 4, AssignedById = 5, CreatedAt = new DateOnly(2025, 11, 20), TaskDeadline = new DateTime(2025, 11, 20, 17, 00, 00, 000, DateTimeKind.Utc), StatusId = 3},
+                new TblTask { Id = 5, TaskName = "Lab Equipment Setup", TaskDescription = "Install and configure lab equipment.", AssignedToId = 3, AssignedById = 3, CreatedAt = new DateOnly(2025, 11, 25), TaskDeadline = new DateTime(2025, 11, 25, 17, 00, 00, 000, DateTimeKind.Utc), StatusId = 4}
             );
         }
 

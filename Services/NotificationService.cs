@@ -52,5 +52,52 @@ namespace Task_Tracker_V4.Services
 
             return false;
         }
+
+        public async Task CreateNotificationNewTaskAsync()
+        {
+
+        }
+
+        public async Task CreateNotificationUpdateTaskStatusAsync()
+        {
+
+        }
+
+
+
+        /*
+        public async TaskSys CreateNotificationNewTaskAsync(string assignedToName, string taskname)
+        {
+
+            Notification notification = new Notification()
+            {
+                Title = "New Task Assigned",
+                Message = $"You have been assigned to {taskname}",
+                AccountId = await _accountRepo.GetIdByNameAsync(assignedToName),
+                ReadStatusId = (long)StatusEnum.UnRead
+            };
+
+            _notificationRepo.Add(notification);
+            await _notificationRepo.SaveChangesAsync();
+        } 
+        */
+        /*
+        public async TaskSys CreateNotificationUpdateTaskStatusAsync(long? accountId, string taskname, long statusId)
+        {
+
+            string status = ((StatusEnum)statusId).ToString();
+
+            Notification notification = new Notification()
+            {
+                Title = "Task Status Updated",
+                Message = $"{taskname} has been marked as {status}",
+                AccountId = accountId,
+                ReadStatusId = (long)StatusEnum.UnRead
+            };
+
+            _notificationRepo.Add(notification);
+            await _notificationRepo.SaveChangesAsync();
+        } 
+        */
     }
 }
