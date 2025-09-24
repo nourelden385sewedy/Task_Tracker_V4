@@ -1,16 +1,19 @@
 ﻿using Task_Tracker_V4.DTOs;
 using Task_Tracker_V4.HelperClasses;
 using Task_Tracker_V4.Repositories;
+using Task_Tracker_V4.Data.Models;
 
 namespace Task_Tracker_V4.Services
 {
     public class AccountService
     {
         private readonly AccountRepository _accountRepo;
+        private readonly IRoleMapper _roleMapper;
 
-        public AccountService(AccountRepository accountRepo)
+        public AccountService(AccountRepository accountRepo, IRoleMapper roleMapper)
         {
             _accountRepo = accountRepo;
+            _roleMapper = roleMapper;
         }
 
 
@@ -32,7 +35,7 @@ namespace Task_Tracker_V4.Services
                     Name = account.FullNameEn,
                     Email = account.Email,
                     Phone = account.Phone,
-                    RoleHash = RoleMapper.MapIdToRoleHash(account.RoleId),
+                    RoleHash = _roleMapper.MapToRole(account.RoleId),
                     JoinDate = account.CreatedAt
                 };
                 return accountDto;
@@ -50,7 +53,7 @@ namespace Task_Tracker_V4.Services
                 return false;
             }
             
-            acc.RoleId = RoleMapper.MapRoleHashToId(roleHash);
+            acc.RoleId = _roleMapper.MapToRoleID(roleHash);
             _accountRepo.Update(acc);
             await _accountRepo.SaveChangesAsync();
 
@@ -69,7 +72,7 @@ namespace Task_Tracker_V4.Services
             acc.FullNameEn = accountDto.Name;
             acc.Email = accountDto.Email;
             acc.Phone = accountDto.Phone;
-            acc.RoleId = RoleMapper.MapRoleHashToId(accountDto.RoleHash);
+            acc.RoleId = _roleMapper.MapToRoleID(accountDto.RoleHash);
 
             _accountRepo.Update(acc);
             await _accountRepo.SaveChangesAsync();

@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Task_Tracker_V4.Data;
 using Task_Tracker_V4.DTOs;
 using Task_Tracker_V4.HelperClasses;
-using Task_Tracker_V4.Models;
+using Task_Tracker_V4.Data.Models;
 using Task_Tracker_V4.Repositories.Interfaces;
 
 namespace Task_Tracker_V4.Repositories

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Task_Tracker_V4.Models;
+using Task_Tracker_V4.Data.Models;
 using Task_Tracker_V4.Services;
 
 namespace Task_Tracker_V4.Controllers
@@ -40,17 +40,17 @@ namespace Task_Tracker_V4.Controllers
         }
 
 
-        [HttpDelete("notification/{id}")]
-        public async Task<IActionResult> DeleteNotification(long id)
-        {
-            bool isDeleted = await _notificationService.DeleteNotification(id);
+        //[HttpDelete("notification/{id}")]
+        //public async Task<IActionResult> DeleteNotification(long id)
+        //{
+        //    bool isDeleted = await _notificationService.DeleteNotification(id);
 
-            if (!isDeleted)
-            {
-                return NotFound("Notification Not Found, can't update the Status");
-            }
-            return Ok("Notification Deleted Sucessfully");
-        }
+        //    if (!isDeleted)
+        //    {
+        //        return NotFound("Notification Not Found, can't update the Status");
+        //    }
+        //    return Ok("Notification Deleted Sucessfully");
+        //}
 
     }
 }

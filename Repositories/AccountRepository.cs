@@ -3,18 +3,21 @@ using System;
 using Task_Tracker_V4.Data;
 using Task_Tracker_V4.DTOs;
 using Task_Tracker_V4.HelperClasses;
-using Task_Tracker_V4.Models;
+using Task_Tracker_V4.Data.Models;
 using Task_Tracker_V4.Repositories.Interfaces;
+using Task_Tracker_V4.Services;
 
 namespace Task_Tracker_V4.Repositories
 {
     public class AccountRepository : IAccountRepository
     {
         private readonly MyDbContext _context;
+        private readonly IRoleMapper _roleMapper;
 
-        public AccountRepository(MyDbContext context)
+        public AccountRepository(MyDbContext context, RoleMapper roleMapper)
         {
             _context = context;
+            _roleMapper = roleMapper;
         }
 
         public async Task<IEnumerable<AccountDto>> GetAllAsync()
@@ -27,7 +30,7 @@ namespace Task_Tracker_V4.Repositories
                     Name = a.FullNameEn,
                     Email = a.Email,
                     Phone = a.Phone,
-                    RoleHash = RoleMapper.MapIdToRoleHash(a.RoleId),
+                    RoleHash = _roleMapper.MapToRole(a.RoleId),
                     JoinDate = a.CreatedAt
                 }).ToListAsync();
 

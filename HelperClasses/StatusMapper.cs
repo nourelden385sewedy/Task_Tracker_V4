@@ -11,8 +11,8 @@ namespace Task_Tracker_V4.HelperClasses
             {3, "Not Started"},
             {4, "In Progress"},
             {5, "Completed"},
-            {6, "Read"},
-            {7, "UnRead"}
+            {8, "Read"},
+            {9, "UnRead"}
         };
 
         public static string MapToStatus(long statusId)
@@ -35,13 +35,13 @@ namespace Task_Tracker_V4.HelperClasses
         // will take the Read Status Id and Map it to boolean
         public static bool MapReadStatusBoolean(long? statusId)
         {
-            return statusId == 6 ? true : false;
+            return statusId == 8 ? true : false;
         }
 
         // will take a boolean isRead or not, then map to Read Status ID
         public static long MapReadStatusId(bool? isRead)
         {
-            return isRead == true ? 6 : 7;
+            return isRead == true ? 8 : 9;
         }
 
     }

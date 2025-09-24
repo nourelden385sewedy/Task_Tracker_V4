@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using Task_Tracker_V4.Data;
-using Task_Tracker_V4.Models;
+using Task_Tracker_V4.Data.Models;
 using Task_Tracker_V4.Repositories.Interfaces;
 
 namespace Task_Tracker_V4.Repositories

@@ -1,5 +1,5 @@
 ﻿using Task_Tracker_V4.DTOs;
-using Task_Tracker_V4.Models;
+using Task_Tracker_V4.Data.Models;
 using Task_Tracker_V4.Repositories.Interfaces;
 
 namespace Task_Tracker_V4.Services
@@ -38,20 +38,20 @@ namespace Task_Tracker_V4.Services
             return false;
         }
 
-        public async Task<bool> DeleteNotification(long id)
-        {
-            var not = await _notificationRepo.GetByIdAsync(id);
+        //public async Task<bool> DeleteNotification(long id)
+        //{
+        //    var not = await _notificationRepo.GetByIdAsync(id);
 
-            if (not != null)
-            {
-                not.isActive = false;
-                _notificationRepo.Update(not);
-                await _notificationRepo.SaveChangesAsync();
-                return true;
-            }
+        //    if (not != null)
+        //    {
+        //        not.isActive = false;
+        //        _notificationRepo.Update(not);
+        //        await _notificationRepo.SaveChangesAsync();
+        //        return true;
+        //    }
 
-            return false;
-        }
+        //    return false;
+        //}
 
         public async Task CreateNotificationNewTaskAsync()
         {

@@ -1,6 +1,6 @@
 ﻿using Task_Tracker_V4.DTOs;
 using Task_Tracker_V4.HelperClasses;
-using Task_Tracker_V4.Models;
+using Task_Tracker_V4.Data.Models;
 using Task_Tracker_V4.Repositories.Interfaces;
 using Task_Tracker_V4.Services.Interfaces;
 
@@ -10,11 +10,13 @@ namespace Task_Tracker_V4.Services
     {
         private readonly ILoginRepository _loginRepo;
         private readonly IAccountRepository _accountRepo;
+        private readonly IRoleMapper _roleMapper;
 
-        public LoginService(ILoginRepository loginRepo, IAccountRepository accountRepo)
+        public LoginService(ILoginRepository loginRepo, IAccountRepository accountRepo, IRoleMapper roleMapper)
         {
             _loginRepo = loginRepo;
             _accountRepo = accountRepo;
+            _roleMapper = roleMapper;
         }
 
         public async Task<AccountDto?> ValidateLoginAsync(LoginRequest log)
@@ -30,7 +32,7 @@ namespace Task_Tracker_V4.Services
                     Name = acc.FullNameEn,
                     Email = acc.Email,
                     Phone = acc.Phone,
-                    RoleHash = RoleMapper.MapIdToRoleHash(acc.RoleId),
+                    RoleHash = _roleMapper.MapToRole(acc.RoleId),
                     JoinDate = acc.CreatedAt
                 };
                 return account;

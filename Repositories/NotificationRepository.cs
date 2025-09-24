@@ -1,9 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Task_Tracker_V4.Data;
+using Task_Tracker_V4.Data.Models;
 using Task_Tracker_V4.DTOs;
 using Task_Tracker_V4.HelperClasses;
-using Task_Tracker_V4.Models;
 using Task_Tracker_V4.Repositories.Interfaces;
+using Task_Tracker_V4.Services;
 
 namespace Task_Tracker_V4.Repositories
 {
@@ -25,7 +26,7 @@ namespace Task_Tracker_V4.Repositories
         public async Task<IEnumerable<NotificationDto>> GetByAccountIdAsync(long accountId)
         {
             return await _context.Notifications
-                .Where(n => n.AccountId == accountId && n.isActive == true)
+                .Where(n => n.AccountId == accountId) // isActive == true is missing
                 .Select(n => new NotificationDto { 
                     Id = n.Id,
                     AccountId = n.AccountId,

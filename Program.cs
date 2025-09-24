@@ -24,6 +24,7 @@ builder.Services.AddScoped<INotificationRepository, NotificationRepository>();
 //builder.Services.AddScoped<IStatusRepository, StatusRepository>();
 //builder.Services.AddScoped<ILoginRepository, LoginRepository>();
 //builder.Services.AddScoped<IRoleRepository, RoleRepository>();
+builder.Services.AddScoped<IRoleMapper, RoleMapper>();
 
 
 // 3. Services

@@ -1,4 +1,4 @@
-﻿using Task_Tracker_V4.Models;
+﻿using Task_Tracker_V4.Data.Models;
 
 namespace Task_Tracker_V4.Repositories.Interfaces
 {
