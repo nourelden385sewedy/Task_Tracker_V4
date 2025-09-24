@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Task_Tracker_V4.Models;
+namespace Task_Tracker_V4.Data.Models;
 
 public partial class TblTask
 {
@@ -14,6 +14,8 @@ public partial class TblTask
     public long? AssignedToId { get; set; }
 
     public long? AssignedById { get; set; }
+
+    public DateOnly? DueDate { get; set; }
 
     public DateOnly? CreatedAt { get; set; }
 
@@ -29,7 +31,7 @@ public partial class TblTask
 
     public int? TeamId { get; set; }
 
-    public int? WeekNumber { get; set; }
+    public int WeekNumber { get; set; }
 
     public virtual Account? AdminAccount { get; set; }
 

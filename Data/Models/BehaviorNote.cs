@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Task_Tracker_V4.Models;
+namespace Task_Tracker_V4.Data.Models;
 
 public partial class BehaviorNote
 {
@@ -20,6 +20,4 @@ public partial class BehaviorNote
     public string? Gen { get; set; }
 
     public virtual AttendanceRecord AttendanceRecord { get; set; } = null!;
-
-    public virtual ICollection<AttendanceRecord> AttendanceRecords { get; set; } = new List<AttendanceRecord>();
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Task_Tracker_V4.Models;
+namespace Task_Tracker_V4.Data.Models;
 
 public partial class Notification
 {
@@ -14,8 +14,6 @@ public partial class Notification
     public string Message { get; set; } = null!;
 
     public long? ReadStatusId { get; set; }
-
-    public bool? isActive { get; set; }
 
     public DateTime? CreatedAt { get; set; }
 

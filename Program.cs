@@ -13,7 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 // 1. DbContext
 // HomeLocalDbConnection - AspMonsterConnection
 builder.Services.AddDbContext<MyDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("AspMonsterConnection")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("NewDatabaseHomeLocal")));
 
 
 // 2. Repositories
