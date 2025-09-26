@@ -10,9 +10,9 @@ namespace Task_Tracker_V4.Services
     {
         private readonly ILoginRepository _loginRepo;
         private readonly IAccountRepository _accountRepo;
-        private readonly IRoleMapper _roleMapper;
+        private readonly RoleMapper _roleMapper;
 
-        public LoginService(ILoginRepository loginRepo, IAccountRepository accountRepo, IRoleMapper roleMapper)
+        public LoginService(ILoginRepository loginRepo, IAccountRepository accountRepo, RoleMapper roleMapper)
         {
             _loginRepo = loginRepo;
             _accountRepo = accountRepo;

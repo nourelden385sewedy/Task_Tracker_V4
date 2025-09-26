@@ -5,12 +5,7 @@ using Task_Tracker_V4.Data.Models;
 
 namespace Task_Tracker_V4.Services
 {
-    public interface IRoleMapper
-    {
-        string MapToRole(long roleId);
-        long MapToRoleID(string role);
-    }
-    public class RoleMapper : IRoleMapper
+    public class RoleMapper
     {
         private readonly Dictionary<long, string> _rolesDic;
 

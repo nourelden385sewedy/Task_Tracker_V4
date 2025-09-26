@@ -12,7 +12,7 @@ namespace Task_Tracker_V4.Repositories
     public class AccountRepository : IAccountRepository
     {
         private readonly MyDbContext _context;
-        private readonly IRoleMapper _roleMapper;
+        private readonly RoleMapper _roleMapper;
 
         public AccountRepository(MyDbContext context, RoleMapper roleMapper)
         {
@@ -23,7 +23,7 @@ namespace Task_Tracker_V4.Repositories
         public async Task<IEnumerable<AccountDto>> GetAllAsync()
         {
             return await _context.Accounts
-                .Where(a => a.IsActive == true)
+                .Where(a => a.IsActive == true && a.RoleId >= 25 && a.RoleId <= 30)
                 .Select(a => new AccountDto
                 {
                     Id = a.Id,
@@ -38,7 +38,7 @@ namespace Task_Tracker_V4.Repositories
 
         public async Task<Account?> GetByIdAsync(long id)
         {
-            return await _context.Accounts.FirstOrDefaultAsync(x => x.Id == id && x.IsActive == true);
+            return await _context.Accounts.FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task<Account?> GetByEmailAsync(string email)

@@ -68,7 +68,7 @@ namespace Task_Tracker_V4.Repositories
         public async Task<IEnumerable<TaskDto>> GetByAssignedByIdAsync(long accountId)
         {
             var AssignedByName = await _context.Accounts
-                .Where(x => x.Id == accountId).Select(a => a.FullNameAr)
+                .Where(x => x.Id == accountId).Select(a => a.FullNameEn)
                 .FirstOrDefaultAsync();
 
             return await _context.TblTasks

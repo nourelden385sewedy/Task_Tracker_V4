@@ -2,15 +2,16 @@
 using Task_Tracker_V4.HelperClasses;
 using Task_Tracker_V4.Repositories;
 using Task_Tracker_V4.Data.Models;
+using Task_Tracker_V4.Repositories.Interfaces;
 
 namespace Task_Tracker_V4.Services
 {
     public class AccountService
     {
-        private readonly AccountRepository _accountRepo;
-        private readonly IRoleMapper _roleMapper;
+        private readonly IAccountRepository _accountRepo;
+        private readonly RoleMapper _roleMapper;
 
-        public AccountService(AccountRepository accountRepo, IRoleMapper roleMapper)
+        public AccountService(IAccountRepository accountRepo, RoleMapper roleMapper)
         {
             _accountRepo = accountRepo;
             _roleMapper = roleMapper;
