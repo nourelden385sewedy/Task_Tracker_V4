@@ -10,7 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 // 1. DbContext
 // ---------------------------
 builder.Services.AddDbContext<MyDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("NewDatabaseHomeLocal")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("SchoolServerConnection")));
 
 // ---------------------------
 // 2. Repositories
