@@ -1,2 +1,4 @@
 # Ignore Visual Studio cache/temp files
 .vs/
+obj/
+bin/
